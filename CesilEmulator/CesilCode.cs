@@ -72,7 +72,7 @@ namespace CesilEmulator
 
             foreach (var codeLine in _codeLines)
             {
-                output.AppendLine($"{codeLine.Label}\t{codeLine.Instruction}\t{codeLine.Operand}");
+                output.AppendLine($"{codeLine.Label}\t{codeLine.Operator}\t{codeLine.Operand}");
             }
 
             output.AppendLine();

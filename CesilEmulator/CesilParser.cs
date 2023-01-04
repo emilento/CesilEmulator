@@ -20,8 +20,8 @@
             "LINE"
         };
 
-        public bool IsOperatorValid(string op) =>
-            ValidOperators.Any(item => item.Equals(op, StringComparison.CurrentCultureIgnoreCase));
+        public bool IsOperatorValid(string @operator) =>
+            ValidOperators.Any(item => item.Equals(@operator, StringComparison.CurrentCultureIgnoreCase));
 
         public enum ParseResult
         {

@@ -4,16 +4,16 @@
     {
         public string Label { get; }
 
-        public string Instruction { get; }
+        public string Operator { get; }
 
         public string Operand { get; }
 
         public int LineNumber { get; }
 
-        public CesilCodeLine(string label, string instruction, string operand, int lineNumber)
+        public CesilCodeLine(string label, string @operator, string operand, int lineNumber)
         {
             Label = label;
-            Instruction = instruction;
+            Operator = @operator;
             Operand = operand;
             LineNumber = lineNumber;
         }
