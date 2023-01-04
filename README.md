@@ -18,37 +18,37 @@ Jumps and loops can be conditional or non-conditional, and transfer operation of
 Instructions, or operations, are written in upper case and may have a single operand, which can be a store location, constant integer value or line label. Store locations and line labels are alphanumeric, up to six characters, and begin with a letter.[12] Numeric integer constants must be signed + or −, with zero being denoted as +0.[a]
 
 ### Input and output
-**IN** – reads the next value from the data, and stores it in the accumulator. The error message `*** PROGRAM REQUIRES MORE DATA ***` is printed if the program tries to read beyond the end of the data provided.
-**OUT** – prints the current value of the accumulator. No carriage return is printed.
-**PRINT** *"text in quotes"* – prints the given text. No carriage return is printed.
-**LINE** – prints a carriage return, thus starting a new line.
+- **IN** – reads the next value from the data, and stores it in the accumulator. The error message `*** PROGRAM REQUIRES MORE DATA ***` is printed if the program tries to read beyond the end of the data provided.
+- **OUT** – prints the current value of the accumulator. No carriage return is printed.
+- **PRINT** *"text in quotes"* – prints the given text. No carriage return is printed.
+- **LINE** – prints a carriage return, thus starting a new line.
 
 ### Memory storage
-**LOAD** *location* or **LOAD** *constant* – copies the value of the given location or constant to the accumulator.
-**STORE** *location* – copies the contents of the accumulator to the given location.
+- **LOAD** *location* or **LOAD** *constant* – copies the value of the given location or constant to the accumulator.
+- **STORE** *location* – copies the contents of the accumulator to the given location.
 
 ### Mathematical instructions
-**ADD** *location* or **ADD** *constant* – adds the value of the given location or constant to the accumulator.
-**SUBTRACT** *location* or **SUBTRACT** *constant* – subtracts the value of the given location or constant from the accumulator.
-**MULTIPLY** *location* or **MULTIPLY** *constant* – multiplies the accumulator by the value of the given location or constant.
-**DIVIDE** *location* or **DIVIDE** *constant* – divides the accumulator by the value of the given location or constant. The result is rounded down if the result is positive, and up if the result is negative. A `*** DIVISION BY ZERO ***` error message is printed if the divisor is zero. In each case, the result of the operation is stored in the accumulator, replacing the previous value.
+- **ADD** *location* or **ADD** *constant* – adds the value of the given location or constant to the accumulator.  
+- **SUBTRACT** *location* or **SUBTRACT** *constant* – subtracts the value of the given location or constant from the accumulator.  
+- **MULTIPLY** *location* or **MULTIPLY** *constant* – multiplies the accumulator by the value of the given location or constant.  
+- **DIVIDE** *location* or **DIVIDE** *constant* – divides the accumulator by the value of the given location or constant. The result is rounded down if the result is positive, and up if the result is negative. A `*** DIVISION BY ZERO ***` error message is printed if the divisor is zero. In each case, the result of the operation is stored in the accumulator, replacing the previous value.
 
 ### Program control
-**JUMP** *label* – unconditionally transfers control to location labelled.
-**JINEG** *label* (Jump If NEGative) – transfers control to location labelled if the accumulator contains a negative value.
-**JIZERO** *label* (Jump If ZERO) – transfers control to location labelled if the accumulator contains zero.
-**HALT** – terminates the program.
+- **JUMP** *label* – unconditionally transfers control to location labelled.  
+- **JINEG** *label* (**J**ump **I**f **NEG**ative) – transfers control to location labelled if the accumulator contains a negative value.  
+- **JIZERO** *label* (**J**ump **I**f **ZERO**) – transfers control to location labelled if the accumulator contains zero.  
+- **HALT** – terminates the program.  
 
 ### Other symbols
 Three special symbols are used in CESIL at the beginnings of lines.
 
-`%` is used to mark the end of the program and the start of data.  
-`*` is used to mark the end of the data.  
-`(` is used at the start of a line to indicate a comment.  
+- `%` is used to mark the end of the program and the start of data.
+- `*` is used to mark the end of the data.
+- `(` is used at the start of a line to indicate a comment.
 
 ## CESIL programming tools
-An emulator for CESIL, designed to run on Windows and called Visual CESIL, is available as freeware.
-An interpreter for CESIL, designed to run on the Android platform and called Wyrm CESIL, is available as free to install.
+An emulator for CESIL, designed to run on Windows and called Visual CESIL, is available as freeware.  
+An interpreter for CESIL, designed to run on the Android platform and called Wyrm CESIL, is available as free to install.  
 
 ## Example
 The following totals the integers in the runtime data section until it encounters a negative value and prints the total.
