@@ -7,17 +7,17 @@ namespace CesilEmulator
     {
         private readonly List<string> _raw;
 
-        private readonly List<CesilCodeLine> _codeLines;
+        public List<CesilCodeLine> CodeLines { get; }
 
-        private readonly List<int> _data;
+        public List<int> Data { get; }
 
         private bool _isData;
 
         public CesilCode()
         {
             _raw = new List<string>();
-            _codeLines = new List<CesilCodeLine>();
-            _data = new List<int>();
+            CodeLines = new List<CesilCodeLine>();
+            Data = new List<int>();
         }
 
         public void ParseLine(string line)
@@ -47,22 +47,22 @@ namespace CesilEmulator
                 }
                 else if (_isData && int.TryParse(segments[0], out var number))
                 {
-                    _data.Add(number);
+                    Data.Add(number);
                 }
                 else
                 {
-                    _codeLines.Add(new CesilCodeLine(string.Empty, segments[0], string.Empty, _raw.Count));
+                    CodeLines.Add(new CesilCodeLine(string.Empty, segments[0], string.Empty, _raw.Count));
                 }
             }
 
             if (segments.Length == 2 && !_isData)
             {
-                _codeLines.Add(new CesilCodeLine(string.Empty, segments[0], segments[1], _raw.Count));
+                CodeLines.Add(new CesilCodeLine(string.Empty, segments[0], segments[1], _raw.Count));
             }
 
             if (segments.Length == 3 && !_isData)
             {
-                _codeLines.Add(new CesilCodeLine(segments[0], segments[1], segments[2], _raw.Count));
+                CodeLines.Add(new CesilCodeLine(segments[0], segments[1], segments[2], _raw.Count));
             }
         }
 
@@ -70,14 +70,14 @@ namespace CesilEmulator
         {
             var output = new StringBuilder();
 
-            foreach (var codeLine in _codeLines)
+            foreach (var codeLine in CodeLines)
             {
                 output.AppendLine($"{codeLine.Label}\t{codeLine.Operator}\t{codeLine.Operand}");
             }
 
             output.AppendLine();
             output.AppendLine("%DATA*");
-            foreach (var data in _data)
+            foreach (var data in Data)
             {
                 output.AppendLine(data.ToString(CultureInfo.InvariantCulture));
             }
