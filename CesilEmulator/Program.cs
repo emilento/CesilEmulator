@@ -1,18 +1,34 @@
 ﻿using CesilEmulator;
 
-var cesilCode = new CesilCode();
+var code = new CesilCode();
 var content =  await File.ReadAllLinesAsync("code.txt");
 Array.ForEach(
     content,
     line =>
     {
-        cesilCode.ParseLine(line);
+        code.ParseLine(line);
     });
 
-Console.WriteLine(cesilCode.ToString());
+Console.WriteLine(code.ToString());
 
-var storage = new CesilStorage(cesilCode.Data);
-var parser = new CesilParser();
-parser.Execute(cesilCode, storage);
+var interpreter = new CesilInterpreter(code);
+CesilParserResult parserResult;
 
-Console.WriteLine(storage.Accumulator);
+do
+{
+    parserResult = interpreter.Run();
+    if (!string.IsNullOrWhiteSpace(parserResult.Message))
+    {
+        if (parserResult.Result == CesilParserResult.ParseResult.OK)
+        {
+            Console.ResetColor();
+            Console.WriteLine(parserResult.Message);
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(parserResult.Message);
+        }
+    }
+}
+while (parserResult.Result == CesilParserResult.ParseResult.OK);

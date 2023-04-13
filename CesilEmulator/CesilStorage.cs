@@ -25,6 +25,10 @@
             {
                 _variables[variable] = Accumulator;
             }
+            else
+            {
+                _variables.Add(variable, Accumulator);
+            }
         }
 
         public int Get(string variable)
