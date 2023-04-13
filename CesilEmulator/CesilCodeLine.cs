@@ -16,5 +16,10 @@ public class CesilCodeLine
         Operator = @operator;
         Operand = operand;
         LineNumber = lineNumber;
+
+        if (Operator.Equals("PRINT", StringComparison.OrdinalIgnoreCase))
+        {
+            Operand = Operand.Trim('"');
+        }
     }
 }

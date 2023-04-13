@@ -22,7 +22,7 @@ do
         if (parserResult.Result == CesilParserResult.ParseResult.OK)
         {
             Console.ResetColor();
-            Console.WriteLine(parserResult.Message);
+            Console.Write(parserResult.Message);
         }
         else
         {
