@@ -9,8 +9,6 @@ Array.ForEach(
         code.ParseLine(line);
     });
 
-Console.WriteLine(code.ToString());
-
 var interpreter = new CesilInterpreter(code);
 CesilParserResult parserResult;
 
